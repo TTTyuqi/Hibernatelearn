@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!--在model包下的实体对象-->
+<hibernate-mapping package="org.tyq.hiberlen.model">
+    <!--以类名为User的同时，创建一个表名为user-->
+    <class name="Users" table="users">
+        <!--主键映射，属性名为uId,字段名为u_id-->
+        <id name="uId" column="u_id">
+            <!--设置主键为自动增长序列-->
+            <generator class="native"/>
+        </id>
+        <!--非主键映射，属性和字段名一一映射-->
+        <property name="uName" column="u_name"/>
+        <property name="uPasswd" column="u_passwd"/>
+        <property name="uEmali" column="u_email"/>
+    </class>
+
+</hibernate-mapping>
