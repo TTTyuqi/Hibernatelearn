@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!--映射实体类包-->
+<hibernate-mapping package="org.tyq.hiberlen.model">
+    <!--映射当前实体类包下的具体的某一个实体类，一类名为userAddr的同时，创建一个user_addr表-->
+    <class name="userAddr" table="user_addr">
+        <!--主键映射，属性名为uaId，主键字段名为ua_id-->
+        <id name="uaId" column="ua_id">
+            <!--设置主键为自动增长方式-->
+            <generator class="native"></generator>
+        </id>
+        <!--非主键映射，属性和字段名一一映射-->
+        <property name="uaName" column="ua_name"></property>
+        <property name="uaQQnum" column="ua_qqnum"></property>
+        <!--
+           Set：
+              name： 映射集合的名称
+              table：集合的属性要映射到哪张表(address)
+           key：
+              column：指定要映射的表（address）中的外键列
+              element：要映射的表的其他字段
+                  类型一定要指定！
+      -->
+        <set name="uaAddress" table="ua_address">
+            <key column="ua_id"></key>
+            <element column="addr" type="java.lang.String"></element>
+        </set>
+
+
+    </class>
+</hibernate-mapping>
